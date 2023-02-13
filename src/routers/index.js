@@ -1,5 +1,5 @@
+import React from 'react';
 import { Navigate } from "react-router-dom"
-
 import SinppetHome from "../pages/snippet/home"
 import SinppetDetail from "../pages/snippet/detail"
 
@@ -9,7 +9,7 @@ export default [
       element: <SinppetHome/>,
       children: [
         {
-            path: "/detail", 
+            path: "/snippet-home/detail", 
             element: <SinppetDetail/>
         }
 
