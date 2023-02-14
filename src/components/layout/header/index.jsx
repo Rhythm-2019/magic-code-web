@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 const items = [
   {
-    label: '代码片段',
+    label: 'Snippets Playground',
     key: 'Snippets',
     icon: <MailOutlined />,
   }
@@ -31,17 +31,22 @@ function HeadContent(props) {
 
   const avatarProps = {};
   if (props.userInfo == null) {
-    var popoverTitle = 'Log in'
     var popoverContent = (
       <div>
-        <Button size="large  " icon={<GithubOutlined />}>Github Login</Button>
+        <Button size="large" icon={<GithubOutlined />}>Github Login</Button>
       </div>
     )
     avatarProps['icon'] = <UserOutlined />;
    
   } else {
-    var popoverTitle = '未读消息'
     avatarProps['src'] = props.userInfo.avatarUrl;
+    var popoverContent = (
+      <div>
+        {this.props.notification.map((notification) => { 
+          
+         })}
+      </div>
+    )
   }
 
 
@@ -55,7 +60,7 @@ function HeadContent(props) {
         items={items}
         selectedKeys={selectMenuItems}
       />
-      <Popover placement="bottomRight" title={popoverTitle} content={popoverContent} arrow={mergedArrow}>
+      <Popover placement="bottomRight" content={popoverContent} arrow={mergedArrow}>
         <Avatar size="large" className={styles.avatar} {...avatarProps} />
       </Popover>
     </Fragment>
