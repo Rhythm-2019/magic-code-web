@@ -1,0 +1,11 @@
+.layout {
+    height: 100%;
+}
+
+.content {
+    padding: 0 50px;
+}
+.innerContent {
+    min-height: 100%;
+    margin: 100px 200px 50px 200px;
+}

@@ -1,51 +1,28 @@
 import React from 'react';
-import { MailOutlined } from '@ant-design/icons';
-import { Layout, Input, Menu, theme, Avatar } from 'antd';
-import { useState } from 'react';
+import { Layout } from 'antd';
 import { useRoutes } from 'react-router-dom';
-import { UserOutlined } from '@ant-design/icons';
 import routers from './routers'
-import './App.css'
+import styles from './App.module.css'
+import styleUtils from './utils/index.module.css'
+import HeaderContent from './components/layout/header';
 
 const { Header, Content, Footer } = Layout;
 
-
 const App = () => {
-  const items = [
-    {
-      label: '代码片段',
-      key: 'Snippets',
-      icon: <MailOutlined />,
-    }
-  ];
-
-  const [selectMenuItems, setSelectMenuItem] = useState('Snippets');
-
-  const menuOnClick = (e) => {
-    setSelectMenuItem(e.key);
-    // 跳转
-  };
 
   const elements = useRoutes(routers)
+  console.log(styles.layout)
   return (
-    <Layout className="layout">
+    <Layout className={styles.layout}>
       <Header>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          onClick={menuOnClick}
-          items={items}
-          selectedKeys={selectMenuItems}
-        />
-        <Avatar size="large" className="myAvatar" icon={<UserOutlined />} />
+        <HeaderContent/>
       </Header>
-      <Content style={{ padding: '0 50px' }}>
-        <div className="site-layout-content" >
+      <Content className={styles.Content}>
+        <div className={styles.innerContent}>
           {elements}
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+      <Footer className={styleUtils.textAlignCenter}>Ant Design ©2023 Created by Ant UED</Footer>
     </Layout>
   );
 };
